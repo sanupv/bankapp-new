@@ -1,7 +1,7 @@
 <div class="container">
     <div class="title">Registration Page</div>
     <div class="content">
-        <form action="">
+        <form (ngSubmit)="register()">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">User Name</span>
@@ -16,7 +16,7 @@
                     <input type="password" name="password" [(ngModel)]="psw" placeholder="Enter your password" required>
                 </div>
                 <div class="button">
-                    <input type="submit" (click)="register()" value="Register">
+                    <input type="submit"  value="Register">
                 </div>
                 <div class="signup-link">
                     <a routerLink="">Back to login</a>
