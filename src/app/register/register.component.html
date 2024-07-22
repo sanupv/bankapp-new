@@ -7,18 +7,19 @@
                     <span class="details">User Name</span>
                     <input type="text" name="uname" [(ngModel)]="uname" placeholder="Enter User Name" required>
                 </div>
-
                 <div class="input-box">
                     <span class="details">Account Number</span>
                     <input type="text" name="acno" [(ngModel)]="acno" placeholder="Enter Account Number" required>
                 </div>
-
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input type="password" name="password" [(ngModel)]="psw" placeholder="Enter your password" required>
                 </div>
                 <div class="button">
                     <input type="submit" (click)="register()" value="Register">
+                </div>
+                <div class="signup-link">
+                    <a routerLink="">Back to login</a>
                 </div>
             </div>
         </form>

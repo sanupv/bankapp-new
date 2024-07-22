@@ -24,7 +24,24 @@ export class DataService {
     else{
       userDetails[acno] = {acno,username:uname,password:psw,balance:0}
       console.log(userDetails);
+      return true
     }
-    return true
   }
+
+  login(acno:any,psw:any) {
+  
+    var userDetails = this.userDetails
+
+    if (acno in userDetails) {
+      if (psw == userDetails[acno]["password"]) {
+      return true
+      }
+      else {
+        return false
+      }
+    }
+  else {
+        return false
+      }
+    }
 }

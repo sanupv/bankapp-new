@@ -11,7 +11,8 @@ display: grid;
 height: 100%;
 width: 100%;
 place-items: center;
-background: #f2f2f2;
+background-image : url('./assets/background.jpg');
+background-size : cover ;
 }
 ::selection{
 background: #4158d0;

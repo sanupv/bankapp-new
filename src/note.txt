@@ -36,7 +36,7 @@ Dependancy injection
    - In Constructor
    -steps 
 
-   Access Specifier   Access specifier - public/private
+                      Access Specifier - public/private
                       variable 
                       class name 
                                  private variable:Classname 
@@ -45,3 +45,4 @@ Dependancy injection
 Angular Services 
 ----------------
 
+ng g s servicename
