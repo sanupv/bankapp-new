@@ -6,15 +6,16 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   currentuser = ''
+  currentacno = ''
 
   constructor() { }
 
   userDetails: any = {
-    1000: { acno: 1000, username: " Manu", password: 123, balance: 0 },
-    1001: { acno: 1001, username: "Amal", password: 123, balance: 0 },
-    1002: { acno: 1002, username: "Arun", password: 123, balance: 0 },
-    1003: { acno: 1003, username: "Megha", password: 123, balance: 0 },
-    1004: { acno: 1004, username: "Nirmal", password: 123, balance: 0 }
+    1000: { acno: 1000, username: " Manu", password: 123, balance: 0,transaction:[] },
+    1001: { acno: 1001, username: "Amal", password: 123, balance: 0,transaction:[] },
+    1002: { acno: 1002, username: "Arun", password: 123, balance: 0,transaction:[] },
+    1003: { acno: 1003, username: "Megha", password: 123, balance: 0,transaction:[] },
+    1004: { acno: 1004, username: "Nirmal", password: 123, balance: 0,transaction:[] }
   }
 
   register(acno: any, uname: any, psw: any) {
@@ -23,7 +24,7 @@ export class DataService {
       return false
     }
     else {
-      userDetails[acno] = { acno, username: uname, password: psw, balance: 0 }
+      userDetails[acno] = { acno, username: uname, password: psw, balance: 0,transaction:[] }
       console.log(userDetails);
       return true
     }
@@ -35,6 +36,9 @@ export class DataService {
 
     if (acno in userDetails) {
       if (psw == userDetails[acno]["password"]) {
+
+        // store account number
+        this.currentacno = acno
         //store username
         this.currentuser = userDetails[acno]["username"]
         return true
@@ -54,6 +58,7 @@ export class DataService {
     if (acno in userDetails) {
       if (password == userDetails[acno]["password"]) {
         userDetails[acno]["balance"] += amnt
+        userDetails[acno]['transaction'].push({type:'CREDIT',amount:amnt})
         return userDetails[acno]["balance"]
       }
       else {
@@ -72,6 +77,7 @@ export class DataService {
       if (password1 == userDetails[acno1]["password"]) {
         if (amnt1 <= userDetails[acno1]["balance"]) {
           userDetails[acno1]["balance"] -= amnt1
+          userDetails[acno1]['transaction'].push({type:'DEBIT',amount:amnt1})
           return userDetails[acno1]["balance"]
         }
         else {
@@ -88,5 +94,8 @@ export class DataService {
       alert('Incorrect Account Number')
       return false
     }
+  }
+  gettransaction(acno:any){
+    return this.userDetails[acno]["transaction"]
   }
 }

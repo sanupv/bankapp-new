@@ -6,13 +6,9 @@
             <th class="border border-white w-100">Amount</th>
         </thead>
         <tbody>
-            <tr>
-                <td class="border border-white w-100">Debit</td>
-                <td class="border border-white w-100">1000</td>
-            </tr>
-            <tr>
-                <td class="border border-white w-100">Credit</td>
-                <td class="border border-white w-100">1000</td>
+            <tr *ngFor="let i of transaction">
+                <td class="border border-white w-100">{{i.type}}</td>
+                <td class="border border-white w-100">{{i.amount}}</td>
             </tr>
         </tbody>
     </table>
