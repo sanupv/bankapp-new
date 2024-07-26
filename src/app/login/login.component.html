@@ -2,15 +2,19 @@
     <div class="title">
         {{aim}}
     </div>
-    <form>
+    <form [formGroup]="loginForm">
         <div class="field">
-            <input type="text" [(ngModel)]="acno" name="acno" id="acid" required>
-            <label>Account Number</label>
+            <input type="text" formControlName="acno" name="acno" id="acid" placeholder="Account Number"><br>
+            <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched ">
+                <p class="text-danger">Not a valid Account Number</p>
+            </div>
         </div>
         <div class="field">
-            <input type="password" [(ngModel)]="psw" name="psw" id="pid" required>
-            <label>Password</label>
-        </div>
+            <input type="password" formControlName="psw" name="psw" id="pid" placeholder="Password"><br>
+            <div *ngIf="this.loginForm.get('psw')?.errors && this.loginForm.get('psw')?.touched ">
+                <p class="text-danger">Not a Password</p>
+            </div>
+        </div><br>
         <div class="content">
             <div class="checkbox">
                 <input type="checkbox" id="remember-me">

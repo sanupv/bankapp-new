@@ -53,8 +53,8 @@ Angular Directives
 1. Structural Directives - To handle structured datas in view of a component.
  
       -ngFor  - can directly apply in html to access elements from array.
-      -
 
+      -ngIf   - To check a condition in html
 
 
 
@@ -66,6 +66,39 @@ We can create forms in two ways.
 1. Template driven Form.
 
 2. Model driven Form.
+
+             - Reactive Form method
+             ----------------------
+
+             ReactiveFormsModule - Module used to create model forms.
+
+             FormBuilder    - class of ReactiveFormsModule
+
+                            - group,array,control
+
+        Validate Model Form
+        -------------------
+   
+        Validator - A class in angular it includes methods for apply validation. (Inbuilt)
+
+         - Access errors in validator rule.
+
+              this.registerForm.get('uname')?.error
+               
+                                    - valid       - empty response
+
+                                    - invalid     - content
+
+                     if(this.registerForm.get('uname')?.errors)      {    //*ngIf
+
+                     }       
+
+    Local Storage in Angular
+    ------------------------
+    
+    - Store   localStorage.setItem()
+    - Access  localStorage.getItem()
+    - Delete  localStorage.removeItem()
 
 
 

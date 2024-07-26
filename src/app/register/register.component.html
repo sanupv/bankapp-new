@@ -1,22 +1,31 @@
 <div class="container">
     <div class="title">Registration Page</div>
     <div class="content">
-        <form (ngSubmit)="register()">
+        <form (ngSubmit)="register()" [formGroup]="registerForm">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">User Name</span>
-                    <input type="text" name="uname" [(ngModel)]="uname" placeholder="Enter User Name" required>
+                    <input type="text" name="uname" formControlName="uname" placeholder="Enter User Name">
+                    <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched ">
+                        <p class="text-danger">Not a valid Username</p>
+                    </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Account Number</span>
-                    <input type="text" name="acno" [(ngModel)]="acno" placeholder="Enter Account Number" required>
+                    <input type="text" name="acno" formControlName="acno" placeholder="Enter Account Number">
+                    <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched ">
+                        <p class="text-danger">Not a valid Username</p>
+                    </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="password" name="password" [(ngModel)]="psw" placeholder="Enter your password" required>
+                    <input type="password" name="password" formControlName="psw" placeholder="Enter your password">
+                    <div *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched ">
+                        <p class="text-danger">Not a valid Password</p>
+                    </div>
                 </div>
                 <div class="button">
-                    <input type="submit"  value="Register">
+                    <input type="submit" value="Register">
                 </div>
                 <div class="signup-link">
                     <a routerLink="">Back to login</a>

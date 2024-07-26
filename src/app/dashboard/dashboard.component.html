@@ -4,17 +4,23 @@
 </div><br><br>
 <div>
     <div class="mb-3">
-        <form (ngSubmit)="deposit()">
+        <form (ngSubmit)="deposit()" [formGroup]="depositForm">
             <h1>Deposit Form</h1>
-            <input name="acno" [(ngModel)]="acno" type="text" class="form-control" id="acid"
+            <input name="acno" formControlName="acno" type="text" class="form-control" id="acid"
                 placeholder="Enter your account number"><br>
-
-            <input name="psw" [(ngModel)]="psw" type="password" class="form-control" id="psw"
+            <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched ">
+                <p class="text-danger">Not a valid Account Number</p>
+            </div>
+            <input name="psw" formControlName="psw" type="password" class="form-control" id="psw"
                 placeholder="Enter your password"><br>
-
-            <input name="amount" [(ngModel)]="amnt" type="number" class="form-control" id="amid"
+            <div *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched ">
+                <p class="text-danger">Not a valid Password</p>
+            </div>
+            <input name="amount" formControlName="amnt" type="number" class="form-control" id="amid"
                 placeholder="Enter amount"><br>
-
+            <div *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched ">
+                <p class="text-danger">Not a valid Amount</p>
+            </div>
             <div class="field text-center">
                 <input type="submit" value="Deposit">
             </div>
@@ -23,17 +29,23 @@
 </div>
 
 <div>
-    <form (ngSubmit)="withdraw()">
+    <form (ngSubmit)="withdraw()" [formGroup]="withdrawalForm">
         <h1>Withdrawal Form</h1>
-        <input name="acno1" [(ngModel)]="acno1" type="email" class="form-control" id="acid1"
+        <input name="acno1" formControlName="acno1" type="email" class="form-control" id="acid1"
             placeholder="Enter your account number"><br>
-
-        <input name="psw1" [(ngModel)]="psw1" type="password" class="form-control" id="psw1"
+        <div *ngIf="this.withdrawalForm.get('acno1')?.errors && this.depositForm.get('acno1')?.touched ">
+            <p class="text-danger">Not a valid Account Number</p>
+        </div>
+        <input name="psw1" formControlName="psw1" type="password" class="form-control" id="psw1"
             placeholder="Enter your password"><br>
-
-        <input name="amount1" [(ngModel)]="amnt1" type="number" class="form-control" id="amid1"
+        <div *ngIf="this.withdrawalForm.get('psw1')?.errors && this.depositForm.get('psw1')?.touched ">
+            <p class="text-danger">Not a valid Password</p>
+        </div>
+        <input name="amount1" formControlName="amnt1" type="number" class="form-control" id="amid1"
             placeholder="Enter amount"> <br>
-
+        <div *ngIf="this.withdrawalForm.get('amnt1')?.errors && this.depositForm.get('amnt1')?.touched ">
+            <p class="text-danger">Not a valid Amount</p>
+        </div>
         <div class="field text-center">
             <input type="submit" value="Withdraw">
         </div>

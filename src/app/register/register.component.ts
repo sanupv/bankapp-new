@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,28 +10,33 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  uname = ''
-  acno = ''
-  psw = ''
+  constructor(private ds: DataService, private router: Router, private fb: FormBuilder) { }
 
-  constructor(private ds: DataService, private router:Router) {
-  }
-
+  registerForm = this.fb.group({
+    uname: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+    acno: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+    psw: ['', [Validators.required, Validators.pattern('[0-9]+')]]
+  })
 
   register() {
-    var uname = this.uname
-    var acno = this.acno
-    var psw = this.psw
 
-    const result = this.ds.register(acno, uname, psw)
+    var uname = this.registerForm.value.uname
+    var acno = this.registerForm.value.acno
+    var psw = this.registerForm.value.psw
+    if (this.registerForm.valid) {
+      const result = this.ds.register(acno, uname, psw)
 
-    if (result) {
-      alert('registration success')
-      this.router.navigateByUrl('')
+      if (result) {
+        alert('registration success')
+        this.router.navigateByUrl('')
+      }
+      else {
+        alert('User already exists')
+        this.router.navigateByUrl('')
+      }
     }
     else {
-      alert('User already exists')
-      this.router.navigateByUrl('')    
+      alert('Invalid Form')
     }
   }
 }
