@@ -1,8 +1,19 @@
 <h1>Welcome {{user}}</h1>
+<p>{{dateandtime | date : 'medium'}}</p>
 <div>
     <a routerLink="/transaction">View Transaction history</a>
 </div><br><br>
-<div>
+
+<div class="text-end p-3">
+    <button (click)="logout()" class="btn btn-outline-danger">logout</button>
+</div>
+<div class="text-end p-3">
+    <button (click)="deleteconfirm()" class="btn btn-outline-info">Delete</button>
+</div>
+
+<app-deleteconfirm [item]="acno"></app-deleteconfirm>
+
+<div [ngClass]="acno?'style':''">
     <div class="mb-3">
         <form (ngSubmit)="deposit()" [formGroup]="depositForm">
             <h1>Deposit Form</h1>
@@ -28,7 +39,7 @@
     </div>
 </div>
 
-<div>
+<div [ngClass]="acno?'style':''">
     <form (ngSubmit)="withdraw()" [formGroup]="withdrawalForm">
         <h1>Withdrawal Form</h1>
         <input name="acno1" formControlName="acno1" type="email" class="form-control" id="acid1"

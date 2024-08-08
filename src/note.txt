@@ -5,12 +5,12 @@ ts - component
 html - view
 
 1 . One way binding 
-   
+
      1.1 Component to view 
          1.1.1 String interpolation  {{}}
          1.1.2 Property binding              [property]="value"
 
-    1.2 View to component
+     1.2 View to component
         1.2.1 Event binding                    (eventname) = "method name()"
         1.2.2 Event binding using $ event      (eventname) = "methodname($event)"
         1.2.3 Event binding using template rendering variable    #variable
@@ -24,9 +24,9 @@ html - view
 Redirection in Angular
 ----------------------
 
-navigateByUrl           - method used to redirection.
-Router                  - class 
-AppRoutingModule        - module
+navigateByUrl            - method used to redirection.
+Router                   - class 
+AppRoutingModule         - module
 
 
 Dependancy injection 
@@ -34,7 +34,7 @@ Dependancy injection
 
    - To use a method of class in another class.
    - In Constructor
-   -steps 
+   - steps 
 
                       Access Specifier - public/private
                       variable 
@@ -47,7 +47,7 @@ Angular Services
 
 ng g s servicename
 
-Angular Directives
+Angular Directives - To Manage / Manipulate DOM in Angular.
 ------------------
 
 1. Structural Directives - To handle structured datas in view of a component.
@@ -56,6 +56,11 @@ Angular Directives
 
       -ngIf   - To check a condition in html
 
+2.Component Directives - ???
+
+3.Attribute Directives -   
+
+     - [ngClass]
 
 
       Form Validation in Angular
@@ -95,16 +100,31 @@ We can create forms in two ways.
 
     Local Storage in Angular
     ------------------------
-    
+
     - Store   localStorage.setItem()
     - Access  localStorage.getItem()
     - Delete  localStorage.removeItem()
 
 
+    Parent  Child Components communication in Angular
+    -------------------------------------------------
+
+
+  
+
+   Date and Time in Angular
+   ------------------------
+
+   Date - class 
+
+   -create an object of class 'Date' to access date and time.
 
 
 
-
-
+    Angular Pipes - 
 
     
+
+
+
+

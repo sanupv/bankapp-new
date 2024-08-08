@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +11,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class DashboardComponent {
 
   user = ''
+  acno: any
+  dateandtime :any
 
-  constructor(private ds: DataService, private fb: FormBuilder) {
+  constructor(private ds: DataService, private fb: FormBuilder, private router: Router) {
+     
+    this.dateandtime = new Date()
+
     //access username 
     this.user = this.ds.currentuser
   }
@@ -27,6 +33,13 @@ export class DashboardComponent {
     psw1: ['', [Validators.required, Validators.pattern('[0-9]+')]],
     amnt1: ['', [Validators.required, Validators.pattern('[0-9]+')]]
   })
+
+  ngOnInit(): void {
+    if (!localStorage.getItem('currentacno')) {
+      alert('Please login first')
+      this.router.navigateByUrl('')
+    }
+  }
 
   deposit() {
 
@@ -44,7 +57,7 @@ export class DashboardComponent {
         alert('Incorrect Account number or Password')
       }
     }
-    else{
+    else {
       alert('Form is invalid')
     }
   }
@@ -60,8 +73,18 @@ export class DashboardComponent {
         alert(`${amnt1} debited from your account and the balance is ${result}`)
       }
     }
-    else{
+    else {
       alert('Form is inavalid')
     }
+  }
+
+  logout() {
+    localStorage.removeItem('currentuser')
+    localStorage.removeItem('currentacno')
+    this.router.navigateByUrl('')
+  }
+
+  deleteconfirm() {
+    this.acno = JSON.parse(localStorage.getItem('currentacno') || "")
   }
 }
